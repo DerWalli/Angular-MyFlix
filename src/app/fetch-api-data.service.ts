@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/internal/operators';
+import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -116,7 +116,7 @@ export class UserRegistrationService {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
-    .post(apiUrl + 'users/' + username + movie.Id, 
+    .post(apiUrl + 'users/' + username + movieId, 
         {headers: new HttpHeaders(
           { Authorization: 'Bearer ' + token, }
           )})
@@ -145,7 +145,7 @@ export class UserRegistrationService {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     return this.http
-    .delete(apiUrl + 'users/' + user._id, 
+    .delete(apiUrl + 'users/' + username, 
         {headers: new HttpHeaders(
           { Authorization: 'Bearer ' + token, }
           )})
